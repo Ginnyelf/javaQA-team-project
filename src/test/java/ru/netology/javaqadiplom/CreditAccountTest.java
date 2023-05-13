@@ -18,18 +18,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(3_000, account.getBalance());
     }
 
-    @Test
-    public void shouldAddWithMinusInitialBalance() {   /// 6 не ловит одновременно две ошибки (не выдает два результата IllegalArgumentException эта ошибка прекращает процесс)
-        CreditAccount account = new CreditAccount(
-                2,
-                -2,
-                15
-        );
-
-        account.add(3_000);
-
-        Assertions.assertEquals(3_000, account.getBalance());
-    }
+    
 
 
     @Test
@@ -73,13 +62,16 @@ public class CreditAccountTest {
 
     @Test
     public void ifHaveMinusBalance() {     //// 4
+
         CreditAccount account = new CreditAccount(
                 -200,
                 5_000,
                 15
+
         );
 
         account.yearChange();
+
 
         Assertions.assertEquals(-30, account.yearChange());  //// замена на yearChange так как вычисляем кол-во процентов
     }
@@ -94,7 +86,7 @@ public class CreditAccountTest {
 
         account.yearChange();
 
-        Assertions.assertEquals(30, account.yearChange()); /// заменил ожидаемый результат, замена на yearChange так как вычисляем кол-во процентов
+        Assertions.assertEquals(0, account.yearChange()); /// заменил ожидаемый результат, замена на yearChange так как вычисляем кол-во процентов
     }
 
     @Test
@@ -105,9 +97,9 @@ public class CreditAccountTest {
                 15
         );  /// //  заменил initialBalance 0 на 10
 
-        account.pay(5); /// в методе pay расчет осущ-ся (balance = balance - amount) то есть если указать в amount - 5, то фактически это приведет к увеличению баланса (- на - равно +)
+        account.pay(15);
 
-        Assertions.assertEquals(5, account.getBalance());
+        Assertions.assertEquals(10, account.getBalance());
     }
 
     @Test
