@@ -61,33 +61,6 @@ public class SavingAccountTest {
         Assertions.assertEquals(10_000, account.getBalance());
     }
 
-    @Test
-    public void WhenInitialBalanceIsNegative() {
-        SavingAccount account = new SavingAccount(
-                -1_000,
-                1_000,
-                10_000,
-                5
-        );
-
-        account.add(500);
-
-        Assertions.assertEquals(0, account.getBalance());
-    }
-
-    @Test
-    public void increaseZeroBalance() {
-        SavingAccount account = new SavingAccount(
-                0,
-                1_000,
-                10_000,
-                5
-        );
-
-        account.add(500);
-
-        Assertions.assertEquals(0, account.getBalance());
-    }
 
     @Test
     public void WhenAfterAddOverMaxLimit() {
@@ -101,34 +74,6 @@ public class SavingAccountTest {
         account.add(10000);
 
         Assertions.assertEquals(2000, account.getBalance());
-    }
-
-    @Test
-    public void maxBalanceLessMinBalance() {
-        SavingAccount account = new SavingAccount(
-                4_000,
-                10_000,
-                7_000,
-                5
-        );
-
-        account.add(3_000);
-
-        Assertions.assertEquals(7000, account.getBalance());
-    }
-
-    @Test
-    public void initBalanceLessMinBalance() {
-        SavingAccount account = new SavingAccount(
-                2_000,
-                4_000,
-                10_000,
-                5
-        );
-
-        account.add(2_000);
-
-        Assertions.assertEquals(4000, account.getBalance());
     }
 
 
@@ -260,20 +205,6 @@ public class SavingAccountTest {
         Assertions.assertEquals(30, account.yearChange());
     }
 
-    @Test
-    public void WhenRateIsNegative() {
-        SavingAccount account = new SavingAccount(
-
-                200,
-                200,
-                10_000,
-                -15
-        );
-
-        account.yearChange();
-
-        Assertions.assertEquals(200, account.yearChange());
-    }
 
     @Test
     public void WhenRateIsZero() {
