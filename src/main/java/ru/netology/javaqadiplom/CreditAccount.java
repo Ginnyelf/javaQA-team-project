@@ -48,12 +48,12 @@ public class CreditAccount extends Account {
      * @return true если операция прошла успешно, false иначе.
      */
     public boolean pay(int amount) {
-        if (amount >=balance) {
+        if (amount >= balance) {
             return false;
         }
-        balance = balance - amount;
-        if (balance > creditLimit) {
-             balance = balance-amount;
+
+        if (balance > amount) {
+            balance = balance - amount;
             return true;
         } else {
             return false;
@@ -100,7 +100,7 @@ public class CreditAccount extends Account {
         }
         if (balance < 0) {
 
-            return balance / 100 * rate;
+            return (balance * rate) / 100;
         }
         return 0;
     }
